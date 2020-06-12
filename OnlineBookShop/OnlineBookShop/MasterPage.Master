@@ -8,6 +8,14 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="style.css" rel="stylesheet" />
+    <style type="text/css">
+        .auto-style1 {
+            width: 195px;
+        }
+        .auto-style2 {
+            width: 118px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -65,7 +73,51 @@
     <div class="left_content">
         <div class="title_box">Login</div>
       <div class="border_box">
-          <asp:Login ID="Login1" runat="server"></asp:Login>
+          <asp:Login ID="Login1" runat="server" Width="193px">
+              <LayoutTemplate>
+                  <table cellpadding="4" cellspacing="0" style="border-collapse:collapse;">
+                      <tr>
+                          <td class="auto-style1">
+                              <table cellpadding="0">
+                                  <tr>
+                                      <td align="right">
+                                          <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
+                                      </td>
+                                      <td class="auto-style2">
+                                          <asp:TextBox ID="UserName" runat="server" Font-Size="0.8em"></asp:TextBox>
+                                          <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="User Name is required." ToolTip="User Name is required." ValidationGroup="ctl00$Login1">*</asp:RequiredFieldValidator>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td align="right">
+                                          <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
+                                      </td>
+                                      <td class="auto-style2">
+                                          <asp:TextBox ID="Password" runat="server" Font-Size="0.8em" TextMode="Password"></asp:TextBox>
+                                          <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="ctl00$Login1">*</asp:RequiredFieldValidator>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="2">
+                                          <asp:CheckBox ID="RememberMe" runat="server" Text="Remember me next time." />
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td align="center" colspan="2" style="color:Red;">
+                                          <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td align="right" colspan="2">
+                                          <asp:Button ID="LoginButton" runat="server" BackColor="White" BorderColor="#507CD1" BorderStyle="Solid" BorderWidth="1px" CommandName="Login" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" Text="Log In" ValidationGroup="ctl00$Login1" />
+                                      </td>
+                                  </tr>
+                              </table>
+                          </td>
+                      </tr>
+                  </table>
+              </LayoutTemplate>
+          </asp:Login>
       </div>
       <div class="title_box">Loại sách</div>
       <ul class="left_menu">
@@ -97,12 +149,31 @@
           <span class="border_cart"></span> Total: <span class="price">350$</span> </div>
         <div class="cart_icon"><a href="http://all-free-download.com/free-website-templates/" title="header=[Checkout] body=[&nbsp;] fade=[on]"><img src="images/shoppingcart.png" alt="" width="48" height="48" border="0" /></a></div>
       </div>
-      <div class="title_box">What�s new</div>
+      <%--<div class="title_box">Có gì mới ?</div>
       <div class="border_box">
-        <div class="product_title"><a href="details.html">Motorola 156 MX-VL</a></div>
-        <div class="product_img"><a href="details.html"><img src="images/p2.gif" alt="" border="0" /></a></div>
-        <div class="prod_price"><span class="reduce">350$</span> <span class="price">270$</span></div>
-      </div>
+          <asp:DataList ID="DataList2" runat="server">
+              <ItemTemplate>
+                  <div class="product_title">
+                      <asp:HyperLink ID="hplTitle" runat="server" Text='<%# Eval("TenSach") %>'></asp:HyperLink>
+                  </div>
+                  <div class="product_img">
+                      <asp:HyperLink ID="hplImgProduct" runat="server" NavigateUrl="#">
+                          <asp:Image ID="Image1" runat="server" ImageUrl='<%# "images/"+Eval("Hinh") %>' alt="" border="0" Width="115px" Height="150px"/>
+                      </asp:HyperLink>  
+                  </div>
+                  <div class="prod_price">
+                      <asp:Label ID="Label1" class="price" runat="server" Text='<%# Eval("DonGia")+" VND" %>'></asp:Label>
+                  </div>
+              </ItemTemplate>
+          </asp:DataList>
+        <div class="bottom_prod_box"></div>
+            <div class="prod_details_tab"> 
+                <asp:HyperLink ID="HyperLink6" runat="server">
+                    <asp:Image ID="Image4" runat="server" ImageUrl="images/cart.gif" alt="" border="0" class="left_bt"/>
+                </asp:HyperLink>
+                <asp:HyperLink ID="HyperLink5" NavigateUrl="#" class="prod_details" runat="server" Text="details"></asp:HyperLink>
+            </div> 
+      </div>--%>
       <div class="banner_adds"> <a href="http://all-free-download.com/free-website-templates/"><img src="images/bann1.jpg" alt="" border="0" /></a> </div>
     </div>
     <!-- end of right content -->

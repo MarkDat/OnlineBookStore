@@ -27,6 +27,14 @@ namespace OnlineBookShop
                 da.Fill(dt);
                 this.DataList1.DataSource = dt;
                 this.DataList1.DataBind();
+
+                
+                //q = "SELECT TOP 1 * FROM SACH ORDER BY MASACH DESC";
+                //da = new SqlDataAdapter(q, con);
+                //dt = new DataTable();
+                //da.Fill(dt);
+                //this.DataList2.DataSource = dt;
+                //this.DataList2.DataBind();
                 con.Close();
             }
             catch (SqlException ex)
