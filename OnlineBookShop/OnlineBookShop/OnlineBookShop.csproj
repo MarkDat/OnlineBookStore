@@ -74,6 +74,7 @@
     <Content Include="App_Data\dbBookShop_log.ldf">
       <DependentUpon>dbBookShop.mdf</DependentUpon>
     </Content>
+    <Content Include="chitietsanpham.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="images\addtocart.gif" />
@@ -143,10 +144,18 @@
     <Content Include="images\top_search_bg.gif" />
     <Content Include="images\user_add.png" />
     <Content Include="images\van.jpg" />
+    <Content Include="SanPhamTheoLoai.aspx" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="chitietsanpham.aspx.cs">
+      <DependentUpon>chitietsanpham.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="chitietsanpham.aspx.designer.cs">
+      <DependentUpon>chitietsanpham.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -165,6 +174,13 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SanPhamTheoLoai.aspx.cs">
+      <DependentUpon>SanPhamTheoLoai.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SanPhamTheoLoai.aspx.designer.cs">
+      <DependentUpon>SanPhamTheoLoai.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPage.Master" />

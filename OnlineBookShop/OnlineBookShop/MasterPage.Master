@@ -49,7 +49,7 @@
         <li class="divider"></li>
         <li><a href="http://all-free-download.com/free-website-templates/" class="nav2">Products</a></li>
         <li class="divider"></li>
-        <li><a href="http://all-free-download.com/free-website-templates/" class="nav3">Specials</a></li>
+        <li><asp:HyperLink ID="HyperLink3" runat="server" class="nav3" Text="Owner" NavigateUrl="#"></asp:HyperLink></li>
         <li class="divider"></li>
         <li><a href="http://all-free-download.com/free-website-templates/" class="nav4">My account</a></li>
         <li class="divider"></li>
@@ -73,7 +73,7 @@
     <div class="left_content">
         <div class="title_box">Login</div>
       <div class="border_box">
-          <asp:Login ID="Login1" runat="server" Width="193px">
+          <asp:Login ID="Login1" runat="server" Width="193px" OnAuthenticate="Login1_Authenticate">
               <LayoutTemplate>
                   <table cellpadding="4" cellspacing="0" style="border-collapse:collapse;">
                       <tr>
@@ -125,7 +125,7 @@
             <asp:DataList ID="DataList1" runat="server">
                 <ItemTemplate>
                     <li class="even">
-                    <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("TenLoai") %>' NavigateUrl="#"></asp:HyperLink>
+                        <asp:LinkButton ID="LinkButton1" runat="server" Text='<%# Eval("TenLoai") %>' CommandArgument='<%# Eval("MaLoai") %>' OnClick="LinkButton1_Click"></asp:LinkButton>                  
                      </li>
                  </ItemTemplate>
             </asp:DataList>
@@ -136,7 +136,7 @@
     </div>
     <!-- end of left content Noi dung-->
     <div class="center_content">
-      <div class="center_title_bar">Books</div>
+        <asp:Label ID="lbTitleBar" class="center_title_bar" runat="server" Text="Books"></asp:Label>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
             </asp:ContentPlaceHolder>
@@ -145,14 +145,16 @@
     <div class="right_content">
       <div class="shopping_cart">
         <div class="cart_title">Shopping cart</div>
-        <div class="cart_details"> 3 items <br />
+        <div class="cart_details"> 
+            <asp:Label ID="lbNumItems" runat="server" Text="0 items"></asp:Label> <br />
           <span class="border_cart"></span> Total: <span class="price">350$</span> </div>
         <div class="cart_icon"><a href="http://all-free-download.com/free-website-templates/" title="header=[Checkout] body=[&nbsp;] fade=[on]"><img src="images/shoppingcart.png" alt="" width="48" height="48" border="0" /></a></div>
       </div>
-      <%--<div class="title_box">Có gì mới ?</div>
-      <div class="border_box">
+      <div class="title_box">Có gì mới ?</div>
+      
           <asp:DataList ID="DataList2" runat="server">
               <ItemTemplate>
+                  <div class="border_box">
                   <div class="product_title">
                       <asp:HyperLink ID="hplTitle" runat="server" Text='<%# Eval("TenSach") %>'></asp:HyperLink>
                   </div>
@@ -164,16 +166,10 @@
                   <div class="prod_price">
                       <asp:Label ID="Label1" class="price" runat="server" Text='<%# Eval("DonGia")+" VND" %>'></asp:Label>
                   </div>
+                      </div>
               </ItemTemplate>
           </asp:DataList>
-        <div class="bottom_prod_box"></div>
-            <div class="prod_details_tab"> 
-                <asp:HyperLink ID="HyperLink6" runat="server">
-                    <asp:Image ID="Image4" runat="server" ImageUrl="images/cart.gif" alt="" border="0" class="left_bt"/>
-                </asp:HyperLink>
-                <asp:HyperLink ID="HyperLink5" NavigateUrl="#" class="prod_details" runat="server" Text="details"></asp:HyperLink>
-            </div> 
-      </div>--%>
+      
       <div class="banner_adds"> <a href="http://all-free-download.com/free-website-templates/"><img src="images/bann1.jpg" alt="" border="0" /></a> </div>
     </div>
     <!-- end of right content -->
