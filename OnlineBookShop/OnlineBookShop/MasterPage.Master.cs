@@ -45,7 +45,16 @@ namespace OnlineBookShop
             {
                 lbNumItems.Text = "0 items";
             }
-            else lbNumItems.Text = ((DataTable)Session["cart"]).Rows.Count.ToString() + " items";
+            else {
+                int sum = 0;
+                DataTable cart = (DataTable)Session["cart"];
+                lbNumItems.Text = ((DataTable)Session["cart"]).Rows.Count.ToString() + " items";
+                foreach (DataRow dr in cart.Rows)
+                {
+                    sum += int.Parse(dr["ThanhTien"].ToString());
+                }
+                lbTongTien.Text = sum.ToString()+" VND";
+            }
         }
 
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)

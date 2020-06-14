@@ -147,8 +147,12 @@
         <div class="cart_title">Shopping cart</div>
         <div class="cart_details"> 
             <asp:Label ID="lbNumItems" runat="server" Text="0 items"></asp:Label> <br />
-          <span class="border_cart"></span> Total: <span class="price">350$</span> </div>
-        <div class="cart_icon"><a href="http://all-free-download.com/free-website-templates/" title="header=[Checkout] body=[&nbsp;] fade=[on]"><img src="images/shoppingcart.png" alt="" width="48" height="48" border="0" /></a></div>
+          <span class="border_cart"></span> Total: <asp:Label ID="lbTongTien" runat="server" class="price" Text="0 VND"></asp:Label></div>
+        <div class="cart_icon">
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/GioHang.aspx">
+            <img src="images/shoppingcart.png" alt="" width="48" height="48" border="0" />
+            </asp:HyperLink>
+        </div>
       </div>
       <div class="title_box">Có gì mới ?</div>
       

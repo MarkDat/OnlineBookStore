@@ -75,6 +75,7 @@
       <DependentUpon>dbBookShop.mdf</DependentUpon>
     </Content>
     <Content Include="chitietsanpham.aspx" />
+    <Content Include="GioHang.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="images\addtocart.gif" />
@@ -155,6 +156,13 @@
     </Compile>
     <Compile Include="chitietsanpham.aspx.designer.cs">
       <DependentUpon>chitietsanpham.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GioHang.aspx.cs">
+      <DependentUpon>GioHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GioHang.aspx.designer.cs">
+      <DependentUpon>GioHang.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -94,8 +94,29 @@ namespace OnlineBookShop
                 cart.Rows.Add(row);
             }
             Session["cart"] = cart;
-            ((Label)Master.FindControl("lbNumItems")).Text = ((DataTable)Session["cart"]).Rows.Count.ToString()+" items";
+            changerNumItemsAndPrice();
             ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Record Inserted Successfully');", true);
+        }
+        void changerNumItemsAndPrice()
+        {
+            
+            if (Session["cart"] == null)
+            {
+                ((Label)Master.FindControl("lbNumItems")).Text = "0 items";
+            }
+            else
+            {
+                
+                int sum = 0;
+                DataTable cart = (DataTable)Session["cart"];
+                ((Label)Master.FindControl("lbNumItems")).Text = ((DataTable)Session["cart"]).Rows.Count.ToString() + " items";
+                foreach (DataRow dr in cart.Rows)
+                {
+                    sum += int.Parse(dr["ThanhTien"].ToString());
+                }
+                ((Label)Master.FindControl("lbTongTien")).Text = sum.ToString() + " VND";
+                Context.Items["tongTien"] = sum;
+            }
         }
     }
 }
