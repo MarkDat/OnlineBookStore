@@ -70,6 +70,15 @@ namespace OnlineBookShop
             }
             string ms = dt.Rows[0]["MaSach"].ToString();
             TextBox soLuong = DataList1.Items[0].FindControl("txtInput") as TextBox;
+            try
+            {
+                int sl = int.Parse(soLuong.Text);
+                if (sl < 0 || sl > 1000) { message("Vui lòng nhập số lượng trong khoảng 0-1000"); return; }
+            }
+            catch (Exception)
+            {
+                message("Vui lòng nhập đúng số lượng khi add vào giỏ hàng");
+            }
             bool isExisted = false;
 
             foreach (DataRow dr in cart.Rows)
@@ -95,7 +104,7 @@ namespace OnlineBookShop
             }
             Session["cart"] = cart;
             changerNumItemsAndPrice();
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('Record Inserted Successfully');", true);
+            message("Thêm vào giỏ hàng thành công !");
         }
         void changerNumItemsAndPrice()
         {
@@ -117,6 +126,10 @@ namespace OnlineBookShop
                 ((Label)Master.FindControl("lbTongTien")).Text = sum.ToString() + " VND";
                 Context.Items["tongTien"] = sum;
             }
+        }
+        void message(string s)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('"+s+"');", true);
         }
     }
 }

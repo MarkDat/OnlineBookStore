@@ -18,21 +18,24 @@ namespace OnlineBookShop
         {
             if (Page.IsPostBack) return;
             string q;
-            if (Context.Items["maLoai"] == null)
+            if (Session["maLoai"] == null)
                 return;
             else
             {
-                string maLoai = Context.Items["maLoai"].ToString();
+                string maLoai = Session["maLoai"].ToString();
                 q = "select * from SACH where MaLoai = '" + maLoai + "'";
             }
+            SqlConnection con = new SqlConnection(stcn);
             try
             {
-                SqlDataAdapter da = new SqlDataAdapter(q, stcn);
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter(q, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 //this.DataList1.DataSource = dt;
                 //this.DataList1.DataBind();
                 fillDataList(dt);
+                con.Close();
             }
             catch (SqlException ex)
             {
@@ -41,10 +44,10 @@ namespace OnlineBookShop
         }
         void fillDataList(DataTable dataTable)
         {
-            CollectionPager1.PageSize = 9;// Số items muốn hiển thị trên 1 trang. 
-            CollectionPager1.DataSource = dataTable.DefaultView;
-            CollectionPager1.BindToControl = DataList1;
-            DataList1.DataSource = CollectionPager1.DataSourcePaged;
+            CollectionPager2.PageSize = 9;// Số items muốn hiển thị trên 1 trang. 
+            CollectionPager2.DataSource = dataTable.DefaultView;
+            CollectionPager2.BindToControl = DataList1;
+            DataList1.DataSource = CollectionPager2.DataSourcePaged;
         }
         protected void lbDetails_Click(object sender, EventArgs e)
         {

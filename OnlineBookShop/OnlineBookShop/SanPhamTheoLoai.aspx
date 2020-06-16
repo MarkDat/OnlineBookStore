@@ -30,5 +30,5 @@
                 </div>
         </ItemTemplate>
     </asp:DataList>
-    <cc1:CollectionPager ID="CollectionPager1" ResultsLocation="Bottom" runat="server"></cc1:CollectionPager>
+    <cc1:CollectionPager ID="CollectionPager2" ResultsLocation="Bottom" runat="server"></cc1:CollectionPager>
 </asp:Content>

@@ -55,6 +55,19 @@ namespace OnlineBookShop
                 }
                 lbTongTien.Text = sum.ToString()+" VND";
             }
+
+            if (Session["tendangnhap"] != null)
+            {
+                Login1.Visible = false;
+                lbLogOut.Visible = true;
+                titleLogin.Text = "Chào " + Session["tenkhachhang"].ToString();
+            }
+            else
+            {
+                Login1.Visible = true;
+                lbLogOut.Visible = false;
+                titleLogin.Text = "Login";
+            }
         }
 
         protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
@@ -75,20 +88,31 @@ namespace OnlineBookShop
             }
             if (table.Rows.Count != 0)
             {
-                Response.Cookies["tendangnhap"].Value = ten;
-                //Server.Transfer("sanpham.aspx");
-                Response.Write("<b>Dang nhap thanh cong</b>");
+                Session["tendangnhap"] = ten;
+                Session["tenkhachhang"] = table.Rows[0]["TenKH"];
+                Server.Transfer("Home.aspx");
             }
-            else 
-            this.Login1.FailureText = "Ten dang nhap hay mk khong dung";
+            else
+            {
+                this.Login1.FailureText = "Ten dang nhap hay mk khong dung";
+                Server.Transfer("Home.aspx");
+            }
 
-           
-         }
+        }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            Context.Items["maLoai"] = ((LinkButton)sender).CommandArgument.ToString();
-            Server.Transfer("SanPhamTheoLoai.aspx");
+            Session["maLoai"] = ((LinkButton)sender).CommandArgument.ToString();
+            Response.Redirect("SanPhamTheoLoai.aspx");
+        }
+
+        protected void lbLogOut_Click(object sender, EventArgs e)
+        {
+            Session["tendangnhap"] = null;
+            Session["tenkhachhang"] = null;
+            Login1.Visible = true;
+            lbLogOut.Visible = false;
+            titleLogin.Text = "Login";
         }
     }
 }

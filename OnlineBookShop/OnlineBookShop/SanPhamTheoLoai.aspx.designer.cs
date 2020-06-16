@@ -24,12 +24,12 @@ namespace OnlineBookShop
         protected global::System.Web.UI.WebControls.DataList DataList1;
 
         /// <summary>
-        /// CollectionPager1 control.
+        /// CollectionPager2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SiteUtils.CollectionPager CollectionPager1;
+        protected global::SiteUtils.CollectionPager CollectionPager2;
     }
 }

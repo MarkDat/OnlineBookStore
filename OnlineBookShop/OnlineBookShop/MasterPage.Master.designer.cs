@@ -51,6 +51,24 @@ namespace OnlineBookShop
         protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
 
         /// <summary>
+        /// lbLogOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbLogOut;
+
+        /// <summary>
+        /// titleLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label titleLogin;
+
+        /// <summary>
         /// Login1 control.
         /// </summary>
         /// <remarks>

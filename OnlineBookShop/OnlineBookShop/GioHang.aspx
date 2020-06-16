@@ -54,6 +54,6 @@
     <div style="font-size:15px;margin-left:25px">
     <strong style="color:green">Tổng tiền: </strong>
     <asp:Label ID="lbTongTien" runat="server" Text="0 VND"></asp:Label>
-        <div style="float:right;cursor:pointer;width:75px;height:50px"><asp:Button ID="btnMuaHang" runat="server" Text="Mua hàng" BorderColor="Lime" Height="50px" Width="75px" /></div>
+        <div style="float:right;cursor:pointer;width:75px;height:50px"><asp:Button ID="btnMuaHang" runat="server" Text="Mua hàng" BorderColor="Lime" Height="50px" Width="75px" OnClick="btnMuaHang_Click" /></div>
         </div>
 </asp:Content>

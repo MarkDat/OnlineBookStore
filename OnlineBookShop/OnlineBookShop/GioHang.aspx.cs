@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,6 +12,7 @@ namespace OnlineBookShop
 {
     public partial class GioHang : System.Web.UI.Page
     {
+        string stcn = ConfigurationManager.ConnectionStrings["conect"].ToString();
         DataTable cart;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -83,6 +86,8 @@ namespace OnlineBookShop
             if (Session["cart"] == null)
             {
                 ((Label)Master.FindControl("lbNumItems")).Text = "0 items";
+                ((Label)Master.FindControl("lbTongTien")).Text = "0 VND";
+                lbTongTien.Text ="0 VND";
             }
             else
             {
@@ -99,5 +104,45 @@ namespace OnlineBookShop
                 lbTongTien.Text = Context.Items["tongTien"].ToString() + " VND";
             }
         }
+
+        protected void btnMuaHang_Click(object sender, EventArgs e)
+        {
+           
+            if (Session["tendangnhap"] == null)
+            {
+                message("Vui lòng đăng nhập trước khi mua hàng");
+                return;
+            }
+
+            cart = (DataTable)Session["cart"];
+
+            if ( cart==null ||cart.Rows.Count == 0) { 
+                message("Giỏ hàng rỗng không thể mua");
+                return;
+            }
+            string tenDN = Session["tendangnhap"].ToString();
+            DateTime day = DateTime.Today;
+            string toDay=day.ToString("yyyy-MM-dd");
+            SqlConnection con = new SqlConnection(stcn);
+            con.Open();
+            foreach (DataRow dr in cart.Rows)
+            {
+                SqlCommand cmd = new SqlCommand("insert into DONHANG values ('" + tenDN + "','" + dr["MaSach"].ToString() + "','" + dr["SoLuong"].ToString() + "','" + toDay + "')",con);
+                cmd.ExecuteNonQuery();
+            }
+
+            con.Close();
+            
+            cart = null;
+            Session["cart"] = cart;
+            fillDataToGV();
+            changerNumItemsAndPrice();
+             message("Đã mua hàng thành công !");
         }
+        void message(string s)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", "alert('" + s + "');", true);
+        }
+       
+    }
 }
